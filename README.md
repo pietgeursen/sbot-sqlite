@@ -19,7 +19,9 @@ This is very very WIP. I expect to be throwing it away at some point. There's a 
 If you have postgres set up you can do:
 
 `$ NODE_ENV=staging knex migrate:latest`
+
 `$ NODE_ENV=staging knex seed:run`
+
 `$ NODE_ENV=staging node benchmarks/index.js`
 
 ## Run the very basic benchmarks
