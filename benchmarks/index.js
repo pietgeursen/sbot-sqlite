@@ -11,7 +11,9 @@ sbotGetMyFeed()
   .then(knexGetAllVotesByMe)
   .then(sbotGetMsg)
   .then(knexGetMsg)
+  .then(sbotJsonSearching)
   .then(knexJsonSearching)
+  .then(() => sbot.close())
 
 function sbotGetMsg () {
   console.time('sbot-get-message-by-hash')
@@ -24,9 +26,28 @@ function sbotGetMsg () {
   })
 }
 
+function sbotJsonSearching () {
+  var reg = new RegExp('loomio')
+  console.time('sbot-json-searching')
+  return new Promise(function (resolve, reject) {
+    pull(
+      sbot.createHistoryStream({id: myId}),
+      pull.filter(message => message && message.value && message.value.content && message.value.content.text),
+      pull.map(message => message.value.content.text),
+      pull.filter(text => reg.test(text)),
+      pull.collect(function (err, res) {
+        console.timeEnd('sbot-json-searching')
+        console.log(`got ${res.length} results`)
+        resolve()
+      })
+    )
+  })
+}
+
 function knexJsonSearching () {
   console.time('knex-json-searching')
-  return knex.raw('SELECT * FROM feeds WHERE feed_id=1 AND json_extract(raw, "$.value.content.text") LIKE "%loomio%";')
+  // get the hashes of all the messages with text that mentions loomio
+  return knex.raw('SELECT hash FROM feeds WHERE feed_id=1 AND json_extract(raw, "$.value.content.text") LIKE "%loomio%";')
     .then(function (results) {
       console.timeEnd('knex-json-searching')
       console.log(`got ${results.length} results`)
