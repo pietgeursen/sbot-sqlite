@@ -13,6 +13,7 @@ This is very very WIP. I expect to be throwing it away at some point. There's a 
 ## Import your feed and your friend's feeds.
 
 `$ knex migrate:latest`
+
 `$ knex seed:run` (takes a minute)
 
 ## Run the very basic benchmarks
