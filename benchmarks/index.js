@@ -11,6 +11,7 @@ sbotGetMyFeed()
   .then(knexGetAllVotesByMe)
   .then(sbotGetMsg)
   .then(knexGetMsg)
+  .then(knexJsonSearching)
 
 function sbotGetMsg () {
   console.time('sbot-get-message-by-hash')
@@ -21,6 +22,15 @@ function sbotGetMsg () {
       resolve()
     })
   })
+}
+
+function knexJsonSearching () {
+  console.time('knex-json-searching')
+  return knex.raw('SELECT * FROM feeds WHERE feed_id=1 AND json_extract(raw, "$.value.content.text") LIKE "%loomio%";')
+    .then(function (results) {
+      console.timeEnd('knex-json-searching')
+      console.log(`got ${results.length} results`)
+    })
 }
 
 function knexGetMsg () {
