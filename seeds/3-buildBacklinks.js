@@ -2,6 +2,10 @@ var emitLinks = require('ssb-backlinks/emit-links')
 var pull = require('pull-stream')
 
 exports.seed = function (knex, Promise) {
+  return Promise.resolve()
+
+  // Todo, this is now blowing the callstack
+
   console.log('start building backlinks')
   // Deletes ALL existing entries
   return knex('backlinks').del()

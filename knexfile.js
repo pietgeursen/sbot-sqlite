@@ -10,9 +10,12 @@ module.exports = {
   },
 
   staging: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: './staging.sqlite3'
+      host: '127.0.0.1',
+      user: 'dev',
+      password: 'dev',
+      database: 'dev'
     }
   },
 

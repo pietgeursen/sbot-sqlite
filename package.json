@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "knex": "^0.15.2",
+    "pg": "^7.4.3",
     "pull-stream": "^3.6.9",
     "scuttlebot": "^11.3.3",
     "sqlite3": "^4.0.2",

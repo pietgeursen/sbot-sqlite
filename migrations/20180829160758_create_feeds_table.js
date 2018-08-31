@@ -5,7 +5,7 @@ exports.up = function (knex, Promise) {
       table.increments('id')
       table.string('hash')
       table.unique('hash')
-      table.string('raw')
+      table.text('raw')
       table.integer('feed_id')
       table.foreign('feed_id').references('feed_ids.id')
       table.integer('type_id')

@@ -1,0 +1,32 @@
+sbot-get-my-feed: 1308.424ms
+got 3338 results
+knex-get-my-feed: 228.293ms
+got 3338 results
+sbot-get-all-votes-by-me: 250.339ms
+got 1990 results
+knex-get-all-votes-by-me: 77.841ms
+got 1990 results
+sbot-get-message-by-hash: 2.497ms
+knex-get-message-by-hash: 2.105ms
+
+sbot-get-my-feed: 1254.882ms
+got 3338 results
+knex-get-my-feed: 226.796ms
+got 3338 results
+sbot-get-all-votes-by-me: 241.095ms
+got 1990 results
+knex-get-all-votes-by-me: 73.301ms
+got 1990 results
+sbot-get-message-by-hash: 2.071ms
+knex-get-message-by-hash: 2.234ms
+
+sbot-get-my-feed: 1153.770ms
+got 3338 results
+knex-get-my-feed: 221.331ms
+got 3338 results
+sbot-get-all-votes-by-me: 339.702ms
+got 1990 results
+knex-get-all-votes-by-me: 75.476ms
+got 1990 results
+sbot-get-message-by-hash: 2.407ms
+knex-get-message-by-hash: 1.846ms
